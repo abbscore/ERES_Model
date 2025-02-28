@@ -1,0 +1,127 @@
+from docx import Document
+
+# Create a new Word document
+doc = Document()
+
+# 📌 Key Python Libraries and Their Importance
+doc.add_heading('📌 Key Python Libraries and Their Importance', level=1)
+
+# Define libraries with details
+libraries = [
+    ("1️⃣ NumPy (numpy)", "Version: 2.0.2", [
+        "Fundamental package for numerical computing in Python.",
+        "Used for efficient array operations and matrix manipulations.",
+        "Provides fast mathematical functions essential for machine learning and data analysis."
+    ]),
+    ("2️⃣ Pandas (pandas)", "Version: 2.2.3", [
+        "Provides data structures like DataFrame and Series for handling tabular data.",
+        "Used for data preprocessing, cleaning, and transformation.",
+        "Supports easy integration with Excel, CSV, and databases."
+    ]),
+    ("3️⃣ Scikit-Learn (scikit-learn)", "Version: 1.5.0", [
+        "Provides machine learning algorithms like Random Forest, Logistic Regression, and SVM.",
+        "Used for model training, validation, and evaluation.",
+        "Contains preprocessing, feature selection, and cross-validation utilities."
+    ]),
+    ("4️⃣ XGBoost (xgboost)", "Version: 2.1.4", [
+        "Extreme Gradient Boosting (XGBoost) is one of the most powerful ensemble learning algorithms.",
+        "Used for classification and regression tasks in ML.",
+        "Optimized for speed and performance, handling missing data efficiently."
+    ]),
+    ("5️⃣ SciPy (scipy)", "Version: 1.13.1", [
+        "Provides scientific computing functions like optimization, statistics, and signal processing.",
+        "Used for advanced statistical tests and probability distributions."
+    ]),
+    ("6️⃣ Matplotlib (matplotlib)", "Version: 3.9.4", [
+        "Essential for data visualization.",
+        "Used to create line plots, histograms, scatter plots, and bar charts.",
+        "Works well with NumPy and Pandas."
+    ]),
+    ("7️⃣ Seaborn (seaborn)", "Version: 0.13.2", [
+        "High-level visualization library based on Matplotlib.",
+        "Provides advanced statistical plots like heatmaps, violin plots, and pair plots.",
+        "Makes it easy to visualize relationships in datasets."
+    ]),
+    ("8️⃣ Imbalanced-Learn (imbalanced-learn)", "Version: 0.12.4", [
+        "Specially designed for handling imbalanced datasets.",
+        "Implements oversampling and undersampling techniques like ADASYN, SMOTE, and Random Oversampling.",
+        "Helps improve model performance when dealing with skewed class distributions."
+    ]),
+    ("9️⃣ OpenPyXL (openpyxl)", "Version: 3.1.5", [
+        "Reads and writes Excel files (`.xlsx`).",
+        "Useful for exporting model performance metrics to Excel."
+    ]),
+    ("🔟 Joblib (joblib)", "Version: 1.4.2", [
+        "Used for efficient model saving and loading.",
+        "Speeds up parallel computation and caching."
+    ]),
+    ("1️⃣1️⃣ ThreadPoolCtl (threadpoolctl)", "Version: 3.5.0", [
+        "Controls the number of threads in libraries like NumPy, SciPy, and Scikit-Learn.",
+        "Helps in optimizing parallel computations."
+    ]),
+    ("1️⃣2️⃣ Requests (requests)", "Version: 2.32.3", [
+        "Simplifies HTTP requests (e.g., fetching data from APIs).",
+        "Used for web scraping and API integration."
+    ]),
+    ("1️⃣3️⃣ PyYAML (pyyaml)", "Version: 6.0.2", [
+        "Reads and writes YAML configuration files.",
+        "Used for model parameter storage and configuration management."
+    ]),
+    ("1️⃣4️⃣ Cryptography (cryptography)", "Version: 44.0.1", [
+        "Provides secure encryption and decryption functions.",
+        "Used for handling secure data processing."
+    ]),
+    ("1️⃣5️⃣ TQDM (tqdm)", "Version: 4.67.1", [
+        "Adds progress bars to loops and functions.",
+        "Improves user experience when running long computations."
+    ])
+]
+
+# Add library details to the document
+for lib, version, details in libraries:
+    doc.add_heading(lib, level=2)
+    doc.add_paragraph(version)  # Version info
+    for detail in details:
+        doc.add_paragraph(f"• {detail}")  # Bullet points
+
+# 📌 Summary
+doc.add_page_break()
+doc.add_heading('📌 Summary', level=1)
+
+summary_table = doc.add_table(rows=1, cols=2)
+summary_table.style = 'Table Grid'
+
+# Add table headers
+hdr_cells = summary_table.rows[0].cells
+hdr_cells[0].text = "Library"
+hdr_cells[1].text = "Purpose"
+
+# Add rows for each library
+summary_data = [
+    ("NumPy", "Efficient numerical operations, array manipulations."),
+    ("Pandas", "Data manipulation and analysis."),
+    ("Scikit-Learn", "Machine learning algorithms and evaluation."),
+    ("XGBoost", "High-performance gradient boosting."),
+    ("SciPy", "Advanced statistical functions."),
+    ("Matplotlib", "Basic data visualization."),
+    ("Seaborn", "Statistical data visualization."),
+    ("Imbalanced-Learn", "Handling imbalanced datasets."),
+    ("OpenPyXL", "Reading/Writing Excel files."),
+    ("Joblib", "Efficient model saving and parallel processing."),
+    ("ThreadPoolCtl", "Optimizing multi-threading."),
+    ("Requests", "HTTP requests for APIs."),
+    ("PyYAML", "Configuration file handling."),
+    ("Cryptography", "Secure data encryption."),
+    ("TQDM", "Progress bar visualization."),
+]
+
+for library, purpose in summary_data:
+    row_cells = summary_table.add_row().cells
+    row_cells[0].text = library
+    row_cells[1].text = purpose
+
+# Save the document
+file_path = "Python_Libraries_Detailed.docx"
+doc.save(file_path)
+
+print(f"Word document saved as: {file_path}")
