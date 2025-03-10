@@ -1,0 +1,33 @@
+# 🔄 **Model's Workflow**
+
+The workflow of the **ERES Model** follows a structured pipeline to ensure accurate risk estimation in cardiac surgery patients. Below is an overview of the step-by-step process:
+
+## 📌 **Workflow Steps**
+1. **🛠 Data Preprocessing**  
+   - Handling missing values  
+   - Feature selection  
+   - Normalization of numerical variables  
+
+2. **📊 Feature Engineering**  
+   - Identifying key risk factors  
+   - Encoding categorical variables  
+   - Scaling and transformation  
+
+3. **🤖 Model Training & Evaluation**  
+   - Training models using ML algorithms (Random Forest, XGBoost, Logistic Regression, etc.)  
+   - Cross-validation and hyperparameter tuning  
+   - Model calibration and performance assessment  
+
+4. **📈 Performance Metrics**  
+   - ROC-AUC and calibration plots  
+   - Brier Score for risk estimation  
+   - Decision Curve Analysis (DCA)  
+
+5. **📥 Deployment & Integration**  
+   - Implementing the model into a clinical decision support system  
+   - Ensuring real-time risk estimation capability  
+
+---
+
+### 🔍 **Flowchart Representation**
+📌 *Refer to the flowchart in this repository for a visual representation of the workflow.*  
