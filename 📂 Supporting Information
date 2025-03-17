@@ -1,0 +1,81 @@
+S1 Table. Comparative Analysis of Machine Learning Model Performances for Mortality Prediction (Results from Previous Work)
+| Metric      | LR     | RF     | SVM    | MLP    | DT     | XGBoost |
+|-------------|--------|--------|--------|--------|--------|--------|
+| Accuracy    | 0.8129 | 0.8129 | 0.7626 | 0.7914 | 0.7338 | 0.7626 |
+| Precision   | 0.7500 | 0.7424 | 0.6812 | 0.7042 | 0.6522 | 0.6667 |
+| Recall      | 0.8276 | 0.8448 | 0.8103 | 0.8621 | 0.7759 | 0.8621 |
+| F1-Score    | 0.7869 | 0.7903 | 0.7402 | 0.7752 | 0.7087 | 0.7519 |
+| AUROC       | 0.9132 | 0.9013 | 0.8891 | 0.9061 | 0.7372 | 0.8776 |
+| AUPRC       | 0.8873 | 0.8742 | 0.8576 | 0.8886 | 0.5956 | 0.8332 |
+| Brier Score | 0.1203 | 0.1283 | 0.1357 | 0.1474 | 0.2670 | 0.1636 |
+
+S2 Table. Model Performance Metrics: Comparison of Previous Research and Current Study (Mean Calculated Across Rows for Each Metric)
+| Research      | Accuracy | Precision  | Recall  | F1-Score | AUROC   | AUPRC     Brier Score |
+|---------------|----------|------------|---------|----------|---------|---------|-------------|
+| Previous work | 0.7794   | 0.6995     | 0.8218  | 0.7587   | 0.8708  | 0.8228  | 0.1604      |
+| Building upon | 0.8282   | 0.7508     | 0.7364  | 0.7431   | 0.8841  | 0.8121  | 0.1353      |
+
+Avg_previous work = np.mean(first_row_data, axis=1) Avg_building upon = np.mean(second_row_data, axis=1)
+Here, the axis=1 parameter ensures that the mean is calculated across the rows (i.e., for each metric). Thus, the average of all models was computed for each metric.
+
+S3 Table. Chi-Square and Fisher's Exact Test Results for Categorical Variables in the ASA Score Dataset
+| Variables  | Frequency  | Proportion (%) | p-Value |
+|------------|------------|----------------|---------|
+| Male       | 104        | 58.43          | 0.6268  |
+| SP         | 9          | 5.06           | 0.0006  |
+| DM         | 75         | 42.13          | 0.1950  |
+| CVA        | 6          | 3.37           | 0.0892  |
+| IHD        | 108        | 60.67          | 0.0331  |
+| ASCVD      | 107        | 60.11          | 0.1416  |
+| LD         | 2          | 1.12           | 0.5468  |
+| ND         | 7          | 3.93           | 0.4297  |
+| COPD       | 10         | 5.62           | 0.0146  |
+| CS         | 1          | 0.56           | 0.3258  |
+| CPR        | 1          | 0.56           | 0.3258  |
+| MI         | 9          | 5.06           | 0.0059  |
+| UAP        | 51         | 28.65          | 0.0078  |
+| CHF        | 44         | 24.72          | 0.0057  |
+| TAS        | 7          | 3.93           | 0.0380  |
+| VSD        | 0          | 0.00           | 1.0000  |
+| RD         | 30         | 16.85          | 0.2009  |
+| ACE        | 1          | 0.56           | 0.3258  |
+| PCS        | 22         | 12.36          | 0.0071  |
+| PHT        | 40         | 22.47          | 0.7059  |
+| MR         | 58         | 32.58          | < 0.05a |
+| **ASA Class** | **Frequency** | **Proportion (%)** | **p-Value** |
+| Class 1       | 17            | 9.55                | 0.0151     |
+| Class 2       | 29            | 16.29               |            |
+| Class 3       | 126           | 70.79               |            |
+| Class 4       | 6             | 3.37                |            |
+a p < 0.05
+The mean age was 63.803 years, the average LVEF was 51.236 years, and the mean EUS was 5.511. This indicates that the analyzed patients were generally middle-aged and had varying cardiovascular risk levels. A significant relationship was found between ASA and MR variables (χ2 = 10.4529, p-value = 0.0151). 
+The p-values for all numerical variables (Age, BMI, LVEF, CR, and EUS) were below 0.05. This indicates that these variables do not follow a normal distribution, necessitating the use of non-parametric tests. To compare differences between two groups for non-normally distributed variables, the Mann–Whitney U test was used. 
+Significant differences were observed between the mortality and non-mortality groups in Age's variables, LVEF, CR, and EUS. However, no significant difference was found for BMI (p-value = 0.8497), indicating that BMI does not have a pronounced impact on mortality. The Chi-Square test was used to examine the relationship between ASA score and MR. 
+The Chi-Square value was 10.4529, with a p-value of 0.0151, indicating a significant association between the ASA score and mortality.
+
+S4 Table. Descriptive and Statistical Analysis of Continuous Variables in the ASA Score Dataset: Mann-Whitney U and Shapiro-Wilk Test Results
+| Statistic                      | Age     | BMI     | LVEF   | CR      | EUS    |
+|--------------------------------|---------|---------|--------|---------|--------|
+| **Count**                      | 178     | 178     | 178    | 178     | 178    |
+| **Mean**                       | 63.8034 | 28.5476 | 51.236 | 1.7546  | 5.5112 |
+| **Std** (Standard Deviation)   | 11.2114 | 4.3248  | 13.2294| 3.4256  | 3.2456 |
+| **Min**                        | 29      | 15.92   | 15     | 0.2600  | 0      |
+| **25% (Q1)**                   | 57      | 27.4    | 41.25  | 0.9525  | 4      |
+| **50% (Median)**               | 65      | 28.4    | 55     | 1.27    | 5      |
+| **75% (Q3)**                   | 71      | 29.2975 | 60     | 1.8375  | 7      |
+| **Max**                        | 92      | 50.67   | 65     | 45.8    | 16     |
+| **Mann–Whitney U Test (p-value)** | 0.0045  | 0.8497  | 0.0075  | < 0.05a | 0.0015  |
+| **Shapiro-Wilk Test (p-value)**   | 0.0064  | < 0.05a | < 0.05a | < 0.05a | < 0.05a |
+a p < 0.05
+
+A correlation matrix was computed for the continuous variables (Age, BMI, LVEF, CR, and EUS) and visualized using a heatmap. A positive correlation was observed between Age and EUS (r = 0.31), indicating that as age increases, the EuroSCORE also increases. 
+Additionally, a negative correlation was found between LVEF and EUS (r = -0.36), suggesting that as cardiac function deteriorates (reflected by a decrease in LVEF), the associated risk (EUS) increases.
+ 
+S1 Fig. Heatmap of Correlations Among Continuous Variables in the ASA Score Dataset
+|          | Age  | BMI    | LVEF  | CR    | EUS   |
+|----------|------|--------|-------|-------|-------|
+| **Age**  | 1.00  | 0.09  | -0.17 | -0.01 | 0.31  |
+| **BMI**  | 0.09  | 1.00  | -0.01 | -0.01 | 0.05  | 
+| **LVEF** | -0.17 | -0.01 | 1.00  | -0.03 | -0.36 |
+| **CR**   | -0.01 | -0.01 | -0.03 | 1.00  | 0.12  |
+| **EUS**  | 0.31  | 0.05  | -0.36 | 0.12  | 1.00  |
